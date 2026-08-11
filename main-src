@@ -1,1 +1,824 @@
-Ter
+local TS = game:GetService("TweenService")
+local UIS = game:GetService("UserInputService")
+local Players = game:GetService("Players")
+local CoreGui = game:GetService("CoreGui")
+
+local LP = Players.LocalPlayer
+
+for _, v in pairs(CoreGui:GetChildren()) do
+	if v.Name == "MacLib" then
+		v:Destroy()
+	end
+end
+if LP:FindFirstChild("PlayerGui") then
+	for _, v in pairs(LP.PlayerGui:GetChildren()) do
+		if v.Name == "MacLib" then
+			v:Destroy()
+		end
+	end
+end
+
+local LMG2L = {}
+
+LMG2L["MacLib_1"] = Instance.new("ScreenGui")
+LMG2L["MacLib_1"]["IgnoreGuiInset"] = true
+LMG2L["MacLib_1"]["DisplayOrder"] = 20
+LMG2L["MacLib_1"]["ScreenInsets"] = Enum.ScreenInsets.DeviceSafeInsets
+LMG2L["MacLib_1"]["Name"] = "MacLib"
+LMG2L["MacLib_1"]["ZIndexBehavior"] = Enum.ZIndexBehavior.Sibling
+LMG2L["MacLib_1"]["ResetOnSpawn"] = false
+
+pcall(function()
+	if syn and syn.protect_gui then
+		syn.protect_gui(LMG2L["MacLib_1"])
+	end
+end)
+
+local coreSuccess = pcall(function()
+	LMG2L["MacLib_1"].Parent = CoreGui
+end)
+
+if not coreSuccess then
+	print("your exeuxtor doesn't support this function since we are the goat we still resume the script")
+	LMG2L["MacLib_1"].Parent = LP:WaitForChild("PlayerGui")
+end
+
+LMG2L["MainFrame_2"] = Instance.new("Frame", LMG2L["MacLib_1"])
+LMG2L["MainFrame_2"]["BorderSizePixel"] = 0
+LMG2L["MainFrame_2"]["AutoLocalize"] = false
+LMG2L["MainFrame_2"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+LMG2L["MainFrame_2"]["AnchorPoint"] = Vector2.new(0.5, 0.5)
+LMG2L["MainFrame_2"]["Size"] = UDim2.new(0, 0, 0, 0)
+LMG2L["MainFrame_2"]["Position"] = UDim2.new(0.5, 0, 0.5, 0)
+LMG2L["MainFrame_2"]["Name"] = "MainFrame"
+LMG2L["MainFrame_2"]["BackgroundTransparency"] = 0.1
+LMG2L["MainFrame_2"]["ClipsDescendants"] = false
+
+LMG2L["UICorner_3"] = Instance.new("UICorner", LMG2L["MainFrame_2"])
+LMG2L["UICorner_3"]["CornerRadius"] = UDim.new(0, 12)
+
+LMG2L["FrameHolderSelection_4"] = Instance.new("Frame", LMG2L["MainFrame_2"])
+LMG2L["FrameHolderSelection_4"]["BorderSizePixel"] = 0
+LMG2L["FrameHolderSelection_4"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+LMG2L["FrameHolderSelection_4"]["Size"] = UDim2.new(0, 76, 0, 18)
+LMG2L["FrameHolderSelection_4"]["Position"] = UDim2.new(1, -84, 0, 8)
+LMG2L["FrameHolderSelection_4"]["Name"] = "FrameHolderSelection"
+LMG2L["FrameHolderSelection_4"]["BackgroundTransparency"] = 1
+
+LMG2L["UIListLayout_5"] = Instance.new("UIListLayout", LMG2L["FrameHolderSelection_4"])
+LMG2L["UIListLayout_5"]["Padding"] = UDim.new(0, 3)
+LMG2L["UIListLayout_5"]["SortOrder"] = Enum.SortOrder.LayoutOrder
+LMG2L["UIListLayout_5"]["FillDirection"] = Enum.FillDirection.Horizontal
+
+LMG2L["Minimize_6"] = Instance.new("TextButton", LMG2L["FrameHolderSelection_4"])
+LMG2L["Minimize_6"]["TextWrapped"] = true
+LMG2L["Minimize_6"]["BorderSizePixel"] = 0
+LMG2L["Minimize_6"]["TextScaled"] = true
+LMG2L["Minimize_6"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+LMG2L["Minimize_6"]["BackgroundColor3"] = Color3.fromRGB(255, 88, 88)
+LMG2L["Minimize_6"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+LMG2L["Minimize_6"]["Size"] = UDim2.new(0, 20, 0, 18)
+LMG2L["Minimize_6"]["LayoutOrder"] = -1
+LMG2L["Minimize_6"]["Text"] = "-"
+LMG2L["Minimize_6"]["Name"] = "Minimize"
+
+LMG2L["UICorner_7"] = Instance.new("UICorner", LMG2L["Minimize_6"])
+LMG2L["UICorner_7"]["CornerRadius"] = UDim.new(1, 0)
+
+LMG2L["Fullscreen_8"] = Instance.new("TextButton", LMG2L["FrameHolderSelection_4"])
+LMG2L["Fullscreen_8"]["TextWrapped"] = true
+LMG2L["Fullscreen_8"]["BorderSizePixel"] = 0
+LMG2L["Fullscreen_8"]["TextScaled"] = true
+LMG2L["Fullscreen_8"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+LMG2L["Fullscreen_8"]["BackgroundColor3"] = Color3.fromRGB(135, 255, 119)
+LMG2L["Fullscreen_8"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+LMG2L["Fullscreen_8"]["Size"] = UDim2.new(0, 20, 0, 18)
+LMG2L["Fullscreen_8"]["LayoutOrder"] = 1
+LMG2L["Fullscreen_8"]["Text"] = "+"
+LMG2L["Fullscreen_8"]["Name"] = "Fullscreen"
+
+LMG2L["UICorner_9"] = Instance.new("UICorner", LMG2L["Fullscreen_8"])
+LMG2L["UICorner_9"]["CornerRadius"] = UDim.new(1, 0)
+
+LMG2L["Resize_a"] = Instance.new("TextButton", LMG2L["FrameHolderSelection_4"])
+LMG2L["Resize_a"]["TextWrapped"] = true
+LMG2L["Resize_a"]["BorderSizePixel"] = 0
+LMG2L["Resize_a"]["TextScaled"] = true
+LMG2L["Resize_a"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
+LMG2L["Resize_a"]["BackgroundColor3"] = Color3.fromRGB(255, 236, 84)
+LMG2L["Resize_a"]["FontFace"] = Font.new("rbxasset://fonts/families/AccanthisADFStd.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+LMG2L["Resize_a"]["Size"] = UDim2.new(0, 20, 0, 18)
+LMG2L["Resize_a"]["Text"] = ""
+LMG2L["Resize_a"]["Name"] = "Resize"
+
+LMG2L["UICorner_b"] = Instance.new("UICorner", LMG2L["Resize_a"])
+LMG2L["UICorner_b"]["CornerRadius"] = UDim.new(1, 0)
+
+LMG2L["Image_c"] = Instance.new("ImageLabel", LMG2L["Resize_a"])
+LMG2L["Image_c"]["BorderSizePixel"] = 0
+LMG2L["Image_c"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+LMG2L["Image_c"]["AnchorPoint"] = Vector2.new(0.5, 0.5)
+LMG2L["Image_c"]["Image"] = "rbxassetid://6153965696"
+LMG2L["Image_c"]["Size"] = UDim2.new(0.75, 0, 0.75, 0)
+LMG2L["Image_c"]["BackgroundTransparency"] = 1
+LMG2L["Image_c"]["Name"] = "Image"
+LMG2L["Image_c"]["Position"] = UDim2.new(0.5, 0, 0.5, 0)
+
+LMG2L["DragFrame_d"] = Instance.new("Frame", LMG2L["MainFrame_2"])
+LMG2L["DragFrame_d"]["BorderSizePixel"] = 0
+LMG2L["DragFrame_d"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+LMG2L["DragFrame_d"]["Size"] = UDim2.new(1, -90, 0, 30)
+LMG2L["DragFrame_d"]["Position"] = UDim2.new(0, 0, 0, 0)
+LMG2L["DragFrame_d"]["Name"] = "DragFrame"
+LMG2L["DragFrame_d"]["BackgroundTransparency"] = 1
+
+LMG2L["ImageDrag_e"] = Instance.new("ImageLabel", LMG2L["DragFrame_d"])
+LMG2L["ImageDrag_e"]["BorderSizePixel"] = 0
+LMG2L["ImageDrag_e"]["ScaleType"] = Enum.ScaleType.Tile
+LMG2L["ImageDrag_e"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+LMG2L["ImageDrag_e"]["Image"] = "rbxassetid://94225529221725"
+LMG2L["ImageDrag_e"]["Size"] = UDim2.new(0, 30, 0, 30)
+LMG2L["ImageDrag_e"]["Position"] = UDim2.new(0, 5, 0, 0)
+LMG2L["ImageDrag_e"]["BackgroundTransparency"] = 1
+LMG2L["ImageDrag_e"]["Name"] = "ImageDrag"
+
+LMG2L["UIGradient_f"] = Instance.new("UIGradient", LMG2L["ImageDrag_e"])
+LMG2L["UIGradient_f"]["Rotation"] = 90
+LMG2L["UIGradient_f"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 186, 27)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(213, 0, 17))}
+
+LMG2L["ResizeFrame_10"] = Instance.new("Frame", LMG2L["MainFrame_2"])
+LMG2L["ResizeFrame_10"]["BorderSizePixel"] = 0
+LMG2L["ResizeFrame_10"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+LMG2L["ResizeFrame_10"]["Size"] = UDim2.new(0, 20, 0, 20)
+LMG2L["ResizeFrame_10"]["Position"] = UDim2.new(1, -20, 1, -20)
+LMG2L["ResizeFrame_10"]["Name"] = "ResizeFrame"
+LMG2L["ResizeFrame_10"]["BackgroundTransparency"] = 1
+
+LMG2L["ImageResize_11"] = Instance.new("ImageLabel", LMG2L["ResizeFrame_10"])
+LMG2L["ImageResize_11"]["BorderSizePixel"] = 0
+LMG2L["ImageResize_11"]["ScaleType"] = Enum.ScaleType.Tile
+LMG2L["ImageResize_11"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+LMG2L["ImageResize_11"]["Image"] = "rbxassetid://6153965696"
+LMG2L["ImageResize_11"]["Size"] = UDim2.new(1, 0, 1, 0)
+LMG2L["ImageResize_11"]["BackgroundTransparency"] = 1
+LMG2L["ImageResize_11"]["Name"] = "ImageResize"
+
+LMG2L["UIGradient_12"] = Instance.new("UIGradient", LMG2L["ImageResize_11"])
+LMG2L["UIGradient_12"]["Rotation"] = 90
+LMG2L["UIGradient_12"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 186, 27)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(213, 0, 17))}
+
+LMG2L["UIGradient_13"] = Instance.new("UIGradient", LMG2L["MainFrame_2"])
+LMG2L["UIGradient_13"]["Rotation"] = 90
+LMG2L["UIGradient_13"]["Color"] = ColorSequence.new{ColorSequenceKeypoint.new(0.000, Color3.fromRGB(255, 255, 255)),ColorSequenceKeypoint.new(1.000, Color3.fromRGB(218, 218, 218))}
+
+LMG2L["MainListFrame_14"] = Instance.new("Frame", LMG2L["MainFrame_2"])
+LMG2L["MainListFrame_14"]["BorderSizePixel"] = 0
+LMG2L["MainListFrame_14"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+LMG2L["MainListFrame_14"]["AnchorPoint"] = Vector2.new(0.5, 0.5)
+LMG2L["MainListFrame_14"]["Size"] = UDim2.new(1, -20, 1, -50)
+LMG2L["MainListFrame_14"]["Position"] = UDim2.new(0.5, 0, 0.5, 10)
+LMG2L["MainListFrame_14"]["Name"] = "MainListFrame"
+LMG2L["MainListFrame_14"]["BackgroundTransparency"] = 1
+
+LMG2L["ElementsList_15"] = Instance.new("ScrollingFrame", LMG2L["MainListFrame_14"])
+LMG2L["ElementsList_15"]["ScrollingDirection"] = Enum.ScrollingDirection.Y
+LMG2L["ElementsList_15"]["BorderSizePixel"] = 0
+LMG2L["ElementsList_15"]["ElasticBehavior"] = Enum.ElasticBehavior.Always
+LMG2L["ElementsList_15"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+LMG2L["ElementsList_15"]["Name"] = "ElementsList"
+LMG2L["ElementsList_15"]["Size"] = UDim2.new(1, 0, 1, 0)
+LMG2L["ElementsList_15"]["BackgroundTransparency"] = 1
+LMG2L["ElementsList_15"]["ScrollBarThickness"] = 3
+
+LMG2L["UIListLayout_16"] = Instance.new("UIListLayout", LMG2L["ElementsList_15"])
+LMG2L["UIListLayout_16"]["Padding"] = UDim.new(0, 5)
+LMG2L["UIListLayout_16"]["SortOrder"] = Enum.SortOrder.LayoutOrder
+
+LMG2L["TextButton_18"] = Instance.new("TextButton", LMG2L["MacLib_1"])
+LMG2L["TextButton_18"]["TextWrapped"] = true
+LMG2L["TextButton_18"]["BorderSizePixel"] = 0
+LMG2L["TextButton_18"]["TextScaled"] = true
+LMG2L["TextButton_18"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
+LMG2L["TextButton_18"]["TextColor3"] = Color3.fromRGB(0, 0, 0)
+LMG2L["TextButton_18"]["Size"] = UDim2.new(0, 110, 0, 35)
+LMG2L["TextButton_18"]["Text"] = "Toggle Gui"
+LMG2L["TextButton_18"]["Position"] = UDim2.new(0.5, -55, 0, 10)
+LMG2L["TextButton_18"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+
+LMG2L["UICorner_19"] = Instance.new("UICorner", LMG2L["TextButton_18"])
+LMG2L["UICorner_19"]["CornerRadius"] = UDim.new(0, 8)
+
+local btnDrg, btnDrgSt, btnDrgPos, btnMoved = false, nil, nil, false
+LMG2L["TextButton_18"].InputBegan:Connect(function(inp)
+	if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
+		btnDrg = true
+		btnMoved = false
+		btnDrgSt = inp.Position
+		btnDrgPos = LMG2L["TextButton_18"].Position
+		inp.Changed:Connect(function()
+			if inp.UserInputState == Enum.UserInputState.End then
+				btnDrg = false
+			end
+		end)
+	end
+end)
+
+UIS.InputChanged:Connect(function(inp)
+	if btnDrg and (inp.UserInputType == Enum.UserInputType.MouseMovement or inp.UserInputType == Enum.UserInputType.Touch) then
+		local d = inp.Position - btnDrgSt
+		if math.abs(d.X) > 3 or math.abs(d.Y) > 3 then
+			btnMoved = true
+		end
+		LMG2L["TextButton_18"].Position = UDim2.new(btnDrgPos.X.Scale, btnDrgPos.X.Offset + d.X, btnDrgPos.Y.Scale, btnDrgPos.Y.Offset + d.Y)
+	end
+end)
+
+function LMG2L:CreateToggle(name, callback)
+	local TFrame = Instance.new("Frame", LMG2L["ElementsList_15"])
+	TFrame.Size = UDim2.new(1, -10, 0, 32)
+	TFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TFrame.BorderSizePixel = 0
+	
+	local TCorner = Instance.new("UICorner", TFrame)
+	TCorner.CornerRadius = UDim.new(0, 6)
+	
+	local TText = Instance.new("TextLabel", TFrame)
+	TText.Size = UDim2.new(1, -40, 1, 0)
+	TText.Position = UDim2.new(0, 8, 0, 0)
+	TText.BackgroundTransparency = 1
+	TText.Text = name
+	TText.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TText.TextXAlignment = Enum.TextXAlignment.Left
+	TText.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	TText.TextSize = 14
+	
+	local TBox = Instance.new("TextButton", TFrame)
+	TBox.Size = UDim2.new(0, 18, 0, 18)
+	TBox.Position = UDim2.new(1, -26, 0.5, -9)
+	TBox.BackgroundColor3 = Color3.fromRGB(240, 240, 240)
+	TBox.BorderSizePixel = 0
+	TBox.Text = ""
+	
+	local TBoxCorner = Instance.new("UICorner", TBox)
+	TBoxCorner.CornerRadius = UDim.new(0, 4)
+	
+	local Check = Instance.new("ImageLabel", TBox)
+	Check.Size = UDim2.new(0.7, 0, 0.7, 0)
+	Check.Position = UDim2.new(0.15, 0, 0.15, 0)
+	Check.BackgroundTransparency = 1
+	Check.Image = "rbxassetid://6031094667"
+	Check.ImageColor3 = Color3.fromRGB(255, 255, 255)
+	Check.ImageTransparency = 1
+	
+	local toggled = false
+	TBox.MouseButton1Click:Connect(function()
+		toggled = not toggled
+		local targetColor = toggled and Color3.fromRGB(255, 186, 27) or Color3.fromRGB(240, 240, 240)
+		local targetTrans = toggled and 0 or 1
+		
+		TS:Create(TBox, TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = targetColor}):Play()
+		TS:Create(Check, TweenInfo.new(0.15, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageTransparency = targetTrans}):Play()
+		
+		if callback then callback(toggled) end
+	end)
+end
+
+function LMG2L:CreateButton(name, callback)
+	local BFrame = Instance.new("Frame", LMG2L["ElementsList_15"])
+	BFrame.Size = UDim2.new(1, -10, 0, 32)
+	BFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	BFrame.BorderSizePixel = 0
+	
+	local BCorner = Instance.new("UICorner", BFrame)
+	BCorner.CornerRadius = UDim.new(0, 6)
+	
+	local BBtn = Instance.new("TextButton", BFrame)
+	BBtn.Size = UDim2.new(1, 0, 1, 0)
+	BBtn.BackgroundTransparency = 1
+	BBtn.Text = name
+	BBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+	BBtn.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	BBtn.TextSize = 14
+	
+	BBtn.MouseButton1Click:Connect(function()
+		TS:Create(BFrame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(230, 230, 230)}):Play()
+		task.delay(0.1, function()
+			TS:Create(BFrame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(255, 255, 255)}):Play()
+		end)
+		if callback then callback() end
+	end)
+end
+
+function LMG2L:CreateSlider(name, min, max, default, callback)
+	local SFrame = Instance.new("Frame", LMG2L["ElementsList_15"])
+	SFrame.Size = UDim2.new(1, -10, 0, 42)
+	SFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SFrame.BorderSizePixel = 0
+	
+	local SCorner = Instance.new("UICorner", SFrame)
+	SCorner.CornerRadius = UDim.new(0, 6)
+	
+	local SText = Instance.new("TextLabel", SFrame)
+	SText.Size = UDim2.new(1, -50, 0, 18)
+	SText.Position = UDim2.new(0, 8, 0, 4)
+	SText.BackgroundTransparency = 1
+	SText.Text = name
+	SText.TextColor3 = Color3.fromRGB(0, 0, 0)
+	SText.TextXAlignment = Enum.TextXAlignment.Left
+	SText.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	SText.TextSize = 14
+	
+	local VText = Instance.new("TextLabel", SFrame)
+	VText.Size = UDim2.new(0, 40, 0, 18)
+	VText.Position = UDim2.new(1, -48, 0, 4)
+	VText.BackgroundTransparency = 1
+	VText.Text = tostring(default or min)
+	VText.TextColor3 = Color3.fromRGB(120, 120, 120)
+	VText.TextXAlignment = Enum.TextXAlignment.Right
+	VText.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	VText.TextSize = 13
+	
+	local Bar = Instance.new("Frame", SFrame)
+	Bar.Size = UDim2.new(1, -16, 0, 6)
+	Bar.Position = UDim2.new(0, 8, 1, -12)
+	Bar.BackgroundColor3 = Color3.fromRGB(235, 235, 235)
+	Bar.BorderSizePixel = 0
+	
+	local BarCorner = Instance.new("UICorner", Bar)
+	BarCorner.CornerRadius = UDim.new(1, 0)
+	
+	local Fill = Instance.new("Frame", Bar)
+	local initVal = math.clamp((default or min) - min, 0, max - min) / (max - min)
+	Fill.Size = UDim2.new(initVal, 0, 1, 0)
+	Fill.BackgroundColor3 = Color3.fromRGB(255, 186, 27)
+	Fill.BorderSizePixel = 0
+	
+	local FillCorner = Instance.new("UICorner", Fill)
+	FillCorner.CornerRadius = UDim.new(1, 0)
+	
+	local Grad = Instance.new("UIGradient", Fill)
+	Grad.Rotation = 90
+	Grad.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 186, 27)), ColorSequenceKeypoint.new(1, Color3.fromRGB(213, 0, 17))}
+	
+	local Knob = Instance.new("Frame", Bar)
+	Knob.Size = UDim2.new(0, 12, 0, 12)
+	Knob.AnchorPoint = Vector2.new(0.5, 0.5)
+	Knob.Position = UDim2.new(initVal, 0, 0.5, 0)
+	Knob.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Knob.BorderSizePixel = 0
+	
+	local KnobCorner = Instance.new("UICorner", Knob)
+	KnobCorner.CornerRadius = UDim.new(1, 0)
+	
+	local KnobStroke = Instance.new("UIStroke", Knob)
+	KnobStroke.Thickness = 1
+	KnobStroke.Color = Color3.fromRGB(200, 200, 200)
+	
+	local sliding = false
+	local function update(inp)
+		local pos = math.clamp((inp.Position.X - Bar.AbsolutePosition.X) / Bar.AbsoluteSize.X, 0, 1)
+		local val = math.floor(min + (max - min) * pos)
+		Fill.Size = UDim2.new(pos, 0, 1, 0)
+		Knob.Position = UDim2.new(pos, 0, 0.5, 0)
+		VText.Text = tostring(val)
+		if callback then callback(val) end
+	end
+	
+	Bar.InputBegan:Connect(function(inp)
+		if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
+			sliding = true
+			update(inp)
+		end
+	end)
+	
+	UIS.InputEnded:Connect(function(inp)
+		if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
+			sliding = false
+		end
+	end)
+	
+	UIS.InputChanged:Connect(function(inp)
+		if sliding and (inp.UserInputType == Enum.UserInputType.MouseMovement or inp.UserInputType == Enum.UserInputType.Touch) then
+			update(inp)
+		end
+	end)
+end
+
+function LMG2L:CreateDropdown(name, list, default, callback)
+	local DFrame = Instance.new("Frame", LMG2L["ElementsList_15"])
+	DFrame.Size = UDim2.new(1, -10, 0, 32)
+	DFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	DFrame.BorderSizePixel = 0
+	DFrame.ClipsDescendants = true
+	
+	local DCorner = Instance.new("UICorner", DFrame)
+	DCorner.CornerRadius = UDim.new(0, 6)
+	
+	local DText = Instance.new("TextLabel", DFrame)
+	DText.Size = UDim2.new(1, -120, 0, 32)
+	DText.Position = UDim2.new(0, 8, 0, 0)
+	DText.BackgroundTransparency = 1
+	DText.Text = name
+	DText.TextColor3 = Color3.fromRGB(0, 0, 0)
+	DText.TextXAlignment = Enum.TextXAlignment.Left
+	DText.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	DText.TextSize = 14
+	
+	local DBtn = Instance.new("TextButton", DFrame)
+	DBtn.Size = UDim2.new(0, 100, 0, 20)
+	DBtn.Position = UDim2.new(1, -108, 0, 6)
+	DBtn.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
+	DBtn.BorderSizePixel = 0
+	DBtn.Text = default or "Select..."
+	DBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+	DBtn.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	DBtn.TextSize = 12
+	
+	local DBCorner = Instance.new("UICorner", DBtn)
+	DBCorner.CornerRadius = UDim.new(0, 4)
+	
+	local OptionHolder = Instance.new("Frame", DFrame)
+	OptionHolder.Size = UDim2.new(1, -16, 0, 0)
+	OptionHolder.Position = UDim2.new(0, 8, 0, 36)
+	OptionHolder.BackgroundTransparency = 1
+	
+	local OList = Instance.new("UIListLayout", OptionHolder)
+	OList.Padding = UDim.new(0, 4)
+	OList.SortOrder = Enum.SortOrder.LayoutOrder
+	
+	local open = false
+	local function toggle()
+		open = not open
+		local targetSize = open and UDim2.new(1, -10, 0, 36 + (#list * 24)) or UDim2.new(1, -10, 0, 32)
+		TS:Create(DFrame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = targetSize}):Play()
+	end
+	
+	DBtn.MouseButton1Click:Connect(toggle)
+	
+	for _, opt in ipairs(list) do
+		local OBtn = Instance.new("TextButton", OptionHolder)
+		OBtn.Size = UDim2.new(1, 0, 0, 20)
+		OBtn.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
+		OBtn.BorderSizePixel = 0
+		OBtn.Text = opt
+		OBtn.TextColor3 = Color3.fromRGB(50, 50, 50)
+		OBtn.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+		OBtn.TextSize = 12
+		
+		local OBCorner = Instance.new("UICorner", OBtn)
+		OBCorner.CornerRadius = UDim.new(0, 4)
+		
+		OBtn.MouseButton1Click:Connect(function()
+			DBtn.Text = opt
+			toggle()
+			if callback then callback(opt) end
+		end)
+	end
+end
+
+function LMG2L:CreateColorpicker(name, default, callback)
+	local CFrame = Instance.new("Frame", LMG2L["ElementsList_15"])
+	CFrame.Size = UDim2.new(1, -10, 0, 32)
+	CFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	CFrame.BorderSizePixel = 0
+	
+	local CCorner = Instance.new("UICorner", CFrame)
+	CCorner.CornerRadius = UDim.new(0, 6)
+	
+	local CText = Instance.new("TextLabel", CFrame)
+	CText.Size = UDim2.new(1, -40, 1, 0)
+	CText.Position = UDim2.new(0, 8, 0, 0)
+	CText.BackgroundTransparency = 1
+	CText.Text = name
+	CText.TextColor3 = Color3.fromRGB(0, 0, 0)
+	CText.TextXAlignment = Enum.TextXAlignment.Left
+	CText.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	CText.TextSize = 14
+	
+	local Preview = Instance.new("TextButton", CFrame)
+	Preview.Size = UDim2.new(0, 20, 0, 20)
+	Preview.Position = UDim2.new(1, -28, 0.5, -10)
+	Preview.BackgroundColor3 = default or Color3.fromRGB(255, 0, 0)
+	Preview.BorderSizePixel = 0
+	Preview.Text = ""
+	
+	local PCorner = Instance.new("UICorner", Preview)
+	PCorner.CornerRadius = UDim.new(0, 4)
+	
+	local Menu = Instance.new("Frame", LMG2L["MacLib_1"])
+	Menu.Size = UDim2.new(0, 210, 0, 110)
+	Menu.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Menu.BorderSizePixel = 0
+	Menu.Visible = false
+	Menu.ZIndex = 50
+	
+	local MCorner = Instance.new("UICorner", Menu)
+	MCorner.CornerRadius = UDim.new(0, 8)
+	
+	local MStroke = Instance.new("UIStroke", Menu)
+	MStroke.Thickness = 1
+	MStroke.Color = Color3.fromRGB(220, 220, 220)
+	
+	local MGradient = Instance.new("UIGradient", Menu)
+	MGradient.Rotation = 90
+	MGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1, Color3.fromRGB(235, 235, 235))}
+	
+	local MTitle = Instance.new("TextLabel", Menu)
+	MTitle.Size = UDim2.new(1, -16, 0, 20)
+	MTitle.Position = UDim2.new(0, 8, 0, 4)
+	MTitle.BackgroundTransparency = 1
+	MTitle.Text = name .. " - Picker"
+	MTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
+	MTitle.TextXAlignment = Enum.TextXAlignment.Left
+	MTitle.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	MTitle.TextSize = 13
+	MTitle.ZIndex = 51
+	
+	local HueBar = Instance.new("Frame", Menu)
+	HueBar.Size = UDim2.new(1, -16, 0, 14)
+	HueBar.Position = UDim2.new(0, 8, 0, 28)
+	HueBar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	HueBar.BorderSizePixel = 0
+	HueBar.ZIndex = 51
+	
+	local HBCorner = Instance.new("UICorner", HueBar)
+	HBCorner.CornerRadius = UDim.new(0, 4)
+	
+	local HBGrad = Instance.new("UIGradient", HueBar)
+	HBGrad.Color = ColorSequence.new{
+		ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 0, 0)),
+		ColorSequenceKeypoint.new(0.166, Color3.fromRGB(255, 255, 0)),
+		ColorSequenceKeypoint.new(0.333, Color3.fromRGB(0, 255, 0)),
+		ColorSequenceKeypoint.new(0.5, Color3.fromRGB(0, 255, 255)),
+		ColorSequenceKeypoint.new(0.666, Color3.fromRGB(0, 0, 255)),
+		ColorSequenceKeypoint.new(0.833, Color3.fromRGB(255, 0, 255)),
+		ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 0, 0))
+	}
+	
+	local HKnob = Instance.new("Frame", HueBar)
+	HKnob.Size = UDim2.new(0, 4, 1, 0)
+	HKnob.Position = UDim2.new(0, 0, 0, 0)
+	HKnob.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	HKnob.BorderSizePixel = 0
+	HKnob.ZIndex = 52
+	
+	local HKStroke = Instance.new("UIStroke", HKnob)
+	HKStroke.Thickness = 1
+	HKStroke.Color = Color3.fromRGB(0, 0, 0)
+	
+	local SatBar = Instance.new("Frame", Menu)
+	SatBar.Size = UDim2.new(1, -16, 0, 14)
+	SatBar.Position = UDim2.new(0, 8, 0, 52)
+	SatBar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SatBar.BorderSizePixel = 0
+	SatBar.ZIndex = 51
+	
+	local SBCorner = Instance.new("UICorner", SatBar)
+	SBCorner.CornerRadius = UDim.new(0, 4)
+	
+	local SBGrad = Instance.new("UIGradient", SatBar)
+	SBGrad.Color = ColorSequence.new{
+		ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+		ColorSequenceKeypoint.new(1, default or Color3.fromRGB(255, 0, 0))
+	}
+	
+	local SKnob = Instance.new("Frame", SatBar)
+	SKnob.Size = UDim2.new(0, 4, 1, 0)
+	SKnob.Position = UDim2.new(1, -4, 0, 0)
+	SKnob.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	SKnob.BorderSizePixel = 0
+	SKnob.ZIndex = 52
+	
+	local SKStroke = Instance.new("UIStroke", SKnob)
+	SKStroke.Thickness = 1
+	SKStroke.Color = Color3.fromRGB(0, 0, 0)
+	
+	local CloseBtn = Instance.new("TextButton", Menu)
+	CloseBtn.Size = UDim2.new(1, -16, 0, 20)
+	CloseBtn.Position = UDim2.new(0, 8, 0, 78)
+	CloseBtn.BackgroundColor3 = Color3.fromRGB(240, 240, 240)
+	CloseBtn.BorderSizePixel = 0
+	CloseBtn.Text = "Close"
+	CloseBtn.TextColor3 = Color3.fromRGB(0, 0, 0)
+	CloseBtn.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	CloseBtn.TextSize = 12
+	CloseBtn.ZIndex = 51
+	
+	local CBCorner = Instance.new("UICorner", CloseBtn)
+	CBCorner.CornerRadius = UDim.new(0, 4)
+	
+	local hVal, sVal = 0, 1
+	local function updateColor()
+		local baseColor = Color3.fromHSV(hVal, 1, 1)
+		SBGrad.Color = ColorSequence.new{
+			ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+			ColorSequenceKeypoint.new(1, baseColor)
+		}
+		local finalColor = Color3.fromHSV(hVal, sVal, 1)
+		Preview.BackgroundColor3 = finalColor
+		if callback then callback(finalColor) end
+	end
+	
+	Preview.MouseButton1Click:Connect(function()
+		if Menu.Visible then
+			Menu.Visible = false
+		else
+			local pPos = Preview.AbsolutePosition
+			Menu.Position = UDim2.new(0, pPos.X - 180, 0, pPos.Y + 25)
+			Menu.Visible = true
+		end
+	end)
+	
+	CloseBtn.MouseButton1Click:Connect(function()
+		Menu.Visible = false
+	end)
+	
+	local hDrag, sDrag = false, false
+	
+	HueBar.InputBegan:Connect(function(inp)
+		if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
+			hDrag = true
+			local pos = math.clamp((inp.Position.X - HueBar.AbsolutePosition.X) / HueBar.AbsoluteSize.X, 0, 1)
+			hVal = pos
+			HKnob.Position = UDim2.new(pos, pos == 1 and -4 or 0, 0, 0)
+			updateColor()
+		end
+	end)
+	
+	SatBar.InputBegan:Connect(function(inp)
+		if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
+			sDrag = true
+			local pos = math.clamp((inp.Position.X - SatBar.AbsolutePosition.X) / SatBar.AbsoluteSize.X, 0, 1)
+			sVal = pos
+			SKnob.Position = UDim2.new(pos, pos == 1 and -4 or 0, 0, 0)
+			updateColor()
+		end
+	end)
+	
+	UIS.InputEnded:Connect(function(inp)
+		if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
+			hDrag = false
+			sDrag = false
+		end
+	end)
+	
+	UIS.InputChanged:Connect(function(inp)
+		if inp.UserInputType == Enum.UserInputType.MouseMovement or inp.UserInputType == Enum.UserInputType.Touch then
+			if hDrag then
+				local pos = math.clamp((inp.Position.X - HueBar.AbsolutePosition.X) / HueBar.AbsoluteSize.X, 0, 1)
+				hVal = pos
+				HKnob.Position = UDim2.new(pos, pos == 1 and -4 or 0, 0, 0)
+				updateColor()
+			elseif sDrag then
+				local pos = math.clamp((inp.Position.X - SatBar.AbsolutePosition.X) / SatBar.AbsoluteSize.X, 0, 1)
+				sVal = pos
+				SKnob.Position = UDim2.new(pos, pos == 1 and -4 or 0, 0, 0)
+				updateColor()
+			end
+		end
+	end)
+end
+
+function LMG2L:CreateTextbox(name, placeholder, callback)
+	local TFrame = Instance.new("Frame", LMG2L["ElementsList_15"])
+	TFrame.Size = UDim2.new(1, -10, 0, 32)
+	TFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TFrame.BorderSizePixel = 0
+	
+	local TCorner = Instance.new("UICorner", TFrame)
+	TCorner.CornerRadius = UDim.new(0, 6)
+	
+	local TText = Instance.new("TextLabel", TFrame)
+	TText.Size = UDim2.new(0, 100, 1, 0)
+	TText.Position = UDim2.new(0, 8, 0, 0)
+	TText.BackgroundTransparency = 1
+	TText.Text = name
+	TText.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TText.TextXAlignment = Enum.TextXAlignment.Left
+	TText.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	TText.TextSize = 14
+	
+	local TBox = Instance.new("TextBox", TFrame)
+	TBox.Size = UDim2.new(1, -116, 0, 20)
+	TBox.Position = UDim2.new(0, 108, 0.5, -10)
+	TBox.BackgroundColor3 = Color3.fromRGB(245, 245, 245)
+	TBox.BorderSizePixel = 0
+	TBox.Text = ""
+	TBox.PlaceholderText = placeholder or "Input..."
+	TBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TBox.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	TBox.TextSize = 13
+	TBox.ClipsDescendants = true
+	
+	local TBoxCorner = Instance.new("UICorner", TBox)
+	TBoxCorner.CornerRadius = UDim.new(0, 4)
+	
+	TBox.FocusLost:Connect(function(enter)
+		if callback then callback(TBox.Text, enter) end
+	end)
+end
+
+function LMG2L:CreateLabel(text)
+	local LFrame = Instance.new("Frame", LMG2L["ElementsList_15"])
+	LFrame.Size = UDim2.new(1, -10, 0, 24)
+	LFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	LFrame.BorderSizePixel = 0
+	LFrame.BackgroundTransparency = 0.5
+	
+	local LCorner = Instance.new("UICorner", LFrame)
+	LCorner.CornerRadius = UDim.new(0, 6)
+	
+	local LText = Instance.new("TextLabel", LFrame)
+	LText.Size = UDim2.new(1, -16, 1, 0)
+	LText.Position = UDim2.new(0, 8, 0, 0)
+	LText.BackgroundTransparency = 1
+	LText.Text = text
+	LText.TextColor3 = Color3.fromRGB(80, 80, 80)
+	LText.TextXAlignment = Enum.TextXAlignment.Left
+	LText.FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+	LText.TextSize = 13
+end
+
+local defaultSize = UDim2.new(0, 500, 0, 336)
+local isOpen = true
+
+TS:Create(LMG2L["MainFrame_2"], TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Size = defaultSize}):Play()
+
+local drg, drgSt, drgPos
+LMG2L["DragFrame_d"].InputBegan:Connect(function(inp)
+	if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
+		drg = true
+		drgSt = inp.Position
+		drgPos = LMG2L["MainFrame_2"].Position
+		inp.Changed:Connect(function()
+			if inp.UserInputState == Enum.UserInputState.End then
+				drg = false
+			end
+		end)
+	end
+end)
+
+local rsz, rszSt, rszSz
+LMG2L["ResizeFrame_10"].InputBegan:Connect(function(inp)
+	if inp.UserInputType == Enum.UserInputType.MouseButton1 or inp.UserInputType == Enum.UserInputType.Touch then
+		rsz = true
+		rszSt = inp.Position
+		rszSz = LMG2L["MainFrame_2"].Size
+		inp.Changed:Connect(function()
+			if inp.UserInputState == Enum.UserInputState.End then
+				rsz = false
+			end
+		end)
+	end
+end)
+
+UIS.InputChanged:Connect(function(inp)
+	if inp.UserInputType == Enum.UserInputType.MouseMovement or inp.UserInputType == Enum.UserInputType.Touch then
+		if drg then
+			local d = inp.Position - drgSt
+			TS:Create(LMG2L["MainFrame_2"], TweenInfo.new(0.05, Enum.EasingStyle.Linear), {Position = UDim2.new(drgPos.X.Scale, drgPos.X.Offset + d.X, drgPos.Y.Scale, drgPos.Y.Offset + d.Y)}):Play()
+		elseif rsz then
+			local d = inp.Position - rszSt
+			local nwX = math.max(250, rszSz.X.Offset + d.X)
+			local nwY = math.max(150, rszSz.Y.Offset + d.Y)
+			TS:Create(LMG2L["MainFrame_2"], TweenInfo.new(0, Enum.EasingStyle.Linear), {Size = UDim2.new(0, nwX, 0, nwY)}):Play()
+		end
+	end
+end)
+
+local function toggleUI()
+	if btnMoved then return end
+	isOpen = not isOpen
+	if isOpen then
+		LMG2L["MainFrame_2"].Visible = true
+		TS:Create(LMG2L["MainFrame_2"], TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = defaultSize}):Play()
+	else
+		local tw = TS:Create(LMG2L["MainFrame_2"], TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Size = UDim2.new(0, 0, 0, 0)})
+		tw:Play()
+		tw.Completed:Connect(function()
+			if not isOpen then
+				LMG2L["MainFrame_2"].Visible = false
+			end
+		end)
+	end
+end
+
+LMG2L["TextButton_18"].MouseButton1Click:Connect(toggleUI)
+LMG2L["Minimize_6"].MouseButton1Click:Connect(toggleUI)
+
+local isFS = false
+local preSz, prePos
+LMG2L["Fullscreen_8"].MouseButton1Click:Connect(function()
+	if not isFS then
+		preSz = LMG2L["MainFrame_2"].Size
+		prePos = LMG2L["MainFrame_2"].Position
+		TS:Create(LMG2L["MainFrame_2"], TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = UDim2.new(0.9, 0, 0.9, 0), Position = UDim2.new(0.5, 0, 0.5, 0)}):Play()
+		isFS = true
+	else
+		TS:Create(LMG2L["MainFrame_2"].Size, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = preSz, Position = prePos}):Play()
+		isFS = false
+	end
+end)
+
+return LMG2L
+
