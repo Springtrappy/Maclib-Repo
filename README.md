@@ -1,34 +1,41 @@
 # MacLib
 
-Clean, lightweight, and responsive Roblox UI library designed with smooth animations and dynamic sizing.
+my attempt to remakea Mac lib
 
-## Script Usage
+## Loadstring Setup
 
 ```lua
 local MacLib = loadstring(game:HttpGet("[https://raw.githubusercontent.com/Springtrappy/Maclib-Repo/refs/heads/main/main-src](https://raw.githubusercontent.com/Springtrappy/Maclib-Repo/refs/heads/main/main-src)"))()
 
+-- Toggle Element
 MacLib:CreateToggle("Enable Feature", function(state)
-    print("Toggle:", state)
+    print("Toggle State:", state)
 end)
 
+-- Button Element
 MacLib:CreateButton("Click Me", function()
-    print("Button pressed")
+    print("Button clicked!")
 end)
 
-MacLib:CreateSlider("WalkSpeed", 16, 100, 16, function(val)
-    print("Slider:", val)
+-- Slider Element
+MacLib:CreateSlider("WalkSpeed", 16, 200, 16, function(value)
+    print("Slider Value:", value)
 end)
 
-MacLib:CreateDropdown("Select Mode", {"Mode A", "Mode B", "Mode C"}, "Mode A", function(selected)
-    print("Dropdown:", selected)
+-- Dropdown Element
+MacLib:CreateDropdown("Select Team", {"Red", "Blue", "Green"}, "Red", function(selected)
+    print("Selected Option:", selected)
 end)
 
-MacLib:CreateColorpicker("UI Theme", Color3.fromRGB(255, 0, 0), function(color)
-    print("Color:", color)
+-- Color Picker Element
+MacLib:CreateColorpicker("Theme Color", Color3.fromRGB(255, 0, 0), function(color)
+    print("Selected Color:", color)
 end)
 
-MacLib:CreateTextbox("Input Text", "Type here...", function(text)
-    print("Textbox:", text)
+-- Textbox Element
+MacLib:CreateTextbox("Custom Value", "Type here...", function(text)
+    print("Typed Text:", text)
 end)
 
-MacLib:CreateLabel("Simple Label")
+-- Label Element
+MacLib:CreateLabel("Static Text Label")
